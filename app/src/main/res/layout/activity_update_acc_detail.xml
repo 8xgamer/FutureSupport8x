@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".update_acc_detail">
+
+    <LinearLayout
+        android:id="@+id/tp"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="0dp"
+        android:orientation="vertical"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="ACCOUNT INFORMATION"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/lde"
+        android:background="#2196F3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="8dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/textsaving"
+            android:layout_width="109dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="10dp"
+            android:text="Total Saving"
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/saving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/textsaving"
+            android:layout_alignParentEnd="true"
+            android:hint="Enter Amount"
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/linearA_W_I"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="01dp"
+        android:background="#2196F3"
+        android:layout_below="@+id/lde"
+        android:orientation="horizontal"
+
+        >
+        <TextView
+            android:id="@+id/amount_W_I"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Saving Amount With Interest"
+            android:textSize="15dp"
+            android:paddingLeft="10dp"
+            android:textColor="#000"
+            android:layout_gravity="center"
+            />
+
+        <EditText
+            android:id="@+id/amount_w_i"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:hint="Enter Amount"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/bdown"
+        android:layout_below="@+id/linearA_W_I"
+        android:layout_width="match_parent"
+        android:paddingBottom="5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:layout_marginTop="01dp">
+        <TextView
+            android:id="@+id/text2saving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Total Busy Amount"
+            android:paddingLeft="10dp"
+            android:layout_gravity="center"
+            android:textSize="15dp"
+            android:textColor="#000"/>
+
+        <EditText
+            android:id="@+id/busysaving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:hint="Enter Amount"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/cdown"
+        android:layout_below="@+id/bdown"
+        android:layout_width="match_parent"
+        android:paddingBottom="5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content"
+        android:background="#2196F3"
+        android:layout_marginTop="01dp">
+        <TextView
+            android:id="@+id/Ta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Amount in Account"
+            android:textSize="15dp"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:textColor="#000"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:hint="Enter Amount"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/linear_W_A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cdown"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="01dp"
+        android:padding="5dp"
+        android:background="#2196F3">
+
+        <TextView
+            android:id="@+id/Wid_A"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:text="Withdrawable Amount"
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/wa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:hint="Enter Amount"
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/linear_I_T_N"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_W_A"
+        android:layout_alignParentStart="true"
+        android:paddingBottom="5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="01dp"
+        android:background="#2196F3">
+
+        <TextView
+            android:id="@+id/TN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:text="Interest Till Now"
+            android:layout_centerVertical="true"
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/value4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:hint="Enter Amount"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/linear_L_D_Q"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_I_T_N"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="01dp"
+        android:padding="5dp"
+        android:background="#2196F3">
+
+        <TextView
+            android:id="@+id/love"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="Loan gave to how many members "
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/loan_Q"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:hint="No of person"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_L_D_Q"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="01dp"
+        android:padding="5dp"
+        android:background="#2196F3">
+
+        <TextView
+            android:id="@+id/love2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="Backup Amount"
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/backup_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:hint="Enter Amount"
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/butt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/back"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="Update"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            android:textStyle="italic" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
