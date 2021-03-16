@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+    <RelativeLayout
+        android:id="@+id/detail"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#53BAC4"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        >
+       <TextView
+           android:id="@+id/detailtext"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:text="Account Detail"
+           android:textSize="40dp"
+           android:layout_centerInParent="true"
+           android:textColor="#050505"
+
+           />
+
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="40dp"
+            android:src="@drawable/forward"
+            android:layout_toRightOf="@id/detailtext"
+            android:layout_centerInParent="true"
+            />
+        <ProgressBar
+            android:id="@+id/progressD"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/d2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#A37CD0"
+        android:layout_below="@+id/detail"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        >
+        <TextView
+            android:id="@+id/pdnext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Detail"
+            android:textSize="40dp"
+            android:layout_centerInParent="true"
+            android:textStyle="bold"
+            android:textColor="#050505"
+            />
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="40dp"
+            android:src="@drawable/person"
+            android:layout_toRightOf="@id/pdnext"
+            android:layout_centerInParent="true"
+            />
+        <ProgressBar
+            android:id="@+id/progress2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/md"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/d2"
+        android:background="#FF6986"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <TextView
+            android:id="@+id/membernext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Member Detail"
+            android:textColor="#050505"
+            android:textSize="40dp"
+            android:layout_centerInParent="true"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="40dp"
+            android:src="@drawable/group"
+            android:layout_toRightOf="@id/membernext"
+            android:layout_centerInParent="true"
+            />
+        <ProgressBar
+            android:id="@+id/progress3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/nav_header"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/colorAccent"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:gravity="bottom"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <ImageView
+            android:id="@+id/nav_header_imageView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/nav_header_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:text="Chike Mgbemena"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button5"
+        android:background="@color/green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:padding="2dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginBottom="114dp"
+        android:hint="MY LOCATION"
+        android:textSize="25dp" />
+
+</RelativeLayout>

@@ -1,5 +1,8 @@
 package com.inphynous.futuresupport8x;
 
+import android.content.Intent;
+import android.os.Handler;
+import android.util.Log;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +14,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.bhushan);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent val = new Intent(MainActivity.this , LoginActivity.class);
+                startActivity(val);
+                finish();
+            }
+        },3000);
 
     }
 }
