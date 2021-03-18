@@ -37,8 +37,8 @@ public class HomeActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:19.8305162,75.2842414"));
-                startActivity(intent);
+                Intent installment = new Intent(HomeActivity.this, installment.class);
+                startActivity(installment);
             }
         });
 

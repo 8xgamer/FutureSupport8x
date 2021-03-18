@@ -2,6 +2,7 @@ package com.inphynous.futuresupport8x;
 
 import android.content.Intent;
 import android.nfc.Tag;
+import android.os.StrictMode;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    String url = "https://8xgamer.000webhostapp.com/login.php";
+    String url = "http://192.168.0.170/00_fs_system2021/login.php";
     Button button;
     TextView admin;
     String username, password1;
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        StrictMode.enableDefaults();
         button = findViewById(R.id.login);
         admin=findViewById(R.id.add);
         admin.setOnClickListener(new View.OnClickListener() {
