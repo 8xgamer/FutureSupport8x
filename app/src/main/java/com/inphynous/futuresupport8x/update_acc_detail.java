@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class update_acc_detail extends AppCompatActivity {
     EditText total_deposite1,total_amount1, amt_in_acc1,backup_amt1,Wid_amt1,total_interest1,loan_qty1,busy_amt1;
-    String url = "http://192.168.0.170/00_fs_system2021/update_account.php";
+    String url = "https://8xgamer.000webhostapp.com/update_account.php";
     Button update;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
