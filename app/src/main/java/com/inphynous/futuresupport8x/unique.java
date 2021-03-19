@@ -19,7 +19,7 @@ public class unique extends AppCompatActivity {
     ListView listView;
     MyAdapter adapter;
     String check = "";
-    String url = "https://8xgamer.000webhostapp.com/getdata.php";
+    String url = "http://192.168.0.170/00_fs_system2021/getdata.php";
     Employee employee;
     Detail detail;
     ArrayList<Detail> allDetailArray = new ArrayList<>();
@@ -54,7 +54,7 @@ public class unique extends AppCompatActivity {
     }
 
     private void getdata2() {
-        String url2 = "https://8xgamer.000webhostapp.com/get_p_info.php";
+        String url2 = "http://192.168.0.170/00_fs_system2021/get_p_info.php";
 
 
         StringRequest request = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {

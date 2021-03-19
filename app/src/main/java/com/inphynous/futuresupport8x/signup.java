@@ -66,7 +66,7 @@ public class signup extends AppCompatActivity {
             return;
         } else {
             StringRequest request = new StringRequest(Request.Method.POST,
-                    "https://8xgamer.000webhostapp.com/savedata.php",
+                    "http://192.168.0.170/00_fs_system2021/savedata.php",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
