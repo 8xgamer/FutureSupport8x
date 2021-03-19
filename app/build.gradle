@@ -45,6 +45,3 @@ dependencies {
     implementation 'com.android.support:support-v4:27.0.2'
 
 }
-android{
-    useLibrary 'org.apache.http.legacy'
-}
