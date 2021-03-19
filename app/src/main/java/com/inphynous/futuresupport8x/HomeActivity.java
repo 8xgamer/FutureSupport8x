@@ -34,13 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         progressBar2 = findViewById(R.id.progress2);
         progressBar3 = findViewById(R.id.progress3);
         button = findViewById(R.id.button5);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent installment = new Intent(HomeActivity.this, installment.class);
-                startActivity(installment);
-            }
-        });
+
 
         SessionManager sessionManager = new SessionManager(this);
         HashMap<String, String> userDetails = sessionManager.getUserDetailFromSesion();
@@ -84,6 +78,13 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(bhushan);
                 mdata.setVisibility(View.VISIBLE);
                 progressBar3.setVisibility(View.GONE);
+            }
+        });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent installment = new Intent(HomeActivity.this, installment.class);
+                startActivity(installment);
             }
         });
     }
