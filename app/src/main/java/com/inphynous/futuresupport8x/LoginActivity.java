@@ -32,20 +32,22 @@ public class LoginActivity extends AppCompatActivity {
     Employee employee;
     public static ArrayList<Employee> employeeArrayList = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         button = findViewById(R.id.login);
-        admin=findViewById(R.id.add);
-        admin.setOnClickListener(new View.OnClickListener() {
-                                     @Override
-                                     public void onClick(View view) {
-                                         Intent addmin= new Intent(LoginActivity.this, admin.class);
-                                         startActivity(addmin);
-
-                                     }
-                                 });
+//        admin=findViewById(R.id.add);
+        getSupportActionBar().hide();
+//        admin.setOnClickListener(new View.OnClickListener() {
+//                                     @Override
+//                                     public void onClick(View view) {
+//                                         Intent addmin= new Intent(LoginActivity.this, admin.class);
+//                                         startActivity(addmin);
+//
+//                                     }
+//                                 });
         inputusername = findViewById(R.id.username);
         inputpassword = findViewById(R.id.password);
         signup = findViewById(R.id.log);
