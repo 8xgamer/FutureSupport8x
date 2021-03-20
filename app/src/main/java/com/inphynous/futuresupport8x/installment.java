@@ -94,6 +94,7 @@ public class installment extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    System.out.println(jsonArray);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object2 = jsonArray.getJSONObject(i);
                         final String month_date = object2.getString("month");
@@ -129,6 +130,7 @@ public class installment extends AppCompatActivity {
                         String password1 = userDetails.get(SessionManager.KEY_USERNAME);
                         //use this detail to acces login person username
 
+                        System.out.println(password1);
                         if (password1.equals("LSP")){
                             update.setVisibility(View.VISIBLE);
                             edit.setVisibility(View.VISIBLE);

@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    String url = "https://8xgamer.000webhostapp.com/login.php";
+    String url = "http://192.168.0.170/00_fs_system2021/login.php";
     Button button;
     TextView admin;
     String username, password1;
@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         inputusername = findViewById(R.id.username);
         inputpassword = findViewById(R.id.password);
         signup = findViewById(R.id.log);
-        progressBar = findViewById(R.id.progressD);
+//        progressBar = findViewById(R.id.progressD);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,8 +69,8 @@ public class LoginActivity extends AppCompatActivity {
     private void checkdata() {
         username = inputusername.getText().toString();
         password1 = inputpassword.getText().toString();
-        button.setVisibility(View.GONE);
-        progressBar.setVisibility(View.VISIBLE);
+//        button.setVisibility(View.GONE);
+//        progressBar.setVisibility(View.VISIBLE);
 
         if (TextUtils.isEmpty(username)) {
             inputusername.setError("Enter username and password correct");
@@ -85,8 +85,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (response.equalsIgnoreCase("LOGIN FAILED")) {
                         Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
-                        button.setVisibility(View.VISIBLE);
-                        progressBar.setVisibility(View.GONE);
+//                        button.setVisibility(View.VISIBLE);
+//                        progressBar.setVisibility(View.GONE);
                     } else {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -107,8 +107,8 @@ public class LoginActivity extends AppCompatActivity {
                                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                     startActivity(intent);
                                     finish();
-                                    button.setVisibility(View.VISIBLE);
-                                    progressBar.setVisibility(View.GONE);
+//                                    button.setVisibility(View.VISIBLE);
+//                                    progressBar.setVisibility(View.GONE);
 
 
                             }
@@ -129,8 +129,8 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                    button.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.GONE);
+//                    button.setVisibility(View.VISIBLE);
+//                    progressBar.setVisibility(View.GONE);
                 }
 
 

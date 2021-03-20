@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class AccountActivity extends AppCompatActivity {
     TextView textView,textView2;
-    String url = "https://8xgamer.000webhostapp.com/getdata.php";
+    String url = "http://192.168.0.170/00_fs_system2021/getdata.php";
     AccDetail accDetail;
     TextView text1,text2,date1;
     Button edit_acc;

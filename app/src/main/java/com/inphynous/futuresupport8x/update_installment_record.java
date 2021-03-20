@@ -299,7 +299,6 @@ public class update_installment_record extends AppCompatActivity {
                 params.put("dat11", d11);
                 params.put("dat12", d12);
                 params.put("sum", String.valueOf(Integer.parseInt(t1) + Integer.parseInt(t2) + Integer.parseInt(t3) + Integer.parseInt(t4) + Integer.parseInt(t5) + Integer.parseInt(t6) + Integer.parseInt(t7) + Integer.parseInt(t8) + Integer.parseInt(t9) + Integer.parseInt(t10) + Integer.parseInt(t11) + Integer.parseInt(t12)));
-                System.out.println("we are oneline 301");
                 return params;
             }
         };
@@ -522,26 +521,42 @@ public class update_installment_record extends AppCompatActivity {
     }
 
     private void onClickTime(final TextView mDisplayDate, Calendar startDate) {
-
-
-        if (startDate.get(Calendar.MONTH) <= 10 && startDate.get(Calendar.DAY_OF_MONTH) <= 10) {
+        if (startDate.get(Calendar.MONTH) < 9 && startDate.get(Calendar.DAY_OF_MONTH) < 10) {
             mDisplayDate.setText(new StringBuilder()
                     // Month is 0 based so add 1
                     .append(startDate.get(Calendar.YEAR) + "0")
                     .append((startDate.get(Calendar.MONTH) + 1) + "0")
                     .append(startDate.get(Calendar.DAY_OF_MONTH)));
-        } else if (startDate.get(Calendar.MONTH) <= 10 && startDate.get(Calendar.DAY_OF_MONTH) > 10) {
+        } else if (startDate.get(Calendar.MONTH) < 9 && startDate.get(Calendar.DAY_OF_MONTH) >= 10) {
             mDisplayDate.setText(new StringBuilder()
                     // Month is 0 based so add 1
                     .append(startDate.get(Calendar.YEAR) + "0")
                     .append(startDate.get(Calendar.MONTH) + 1)
                     .append(startDate.get(Calendar.DAY_OF_MONTH)));
-        } else if (startDate.get(Calendar.MONTH) > 10 && startDate.get(Calendar.DAY_OF_MONTH) <= 10) {
+        } else if (startDate.get(Calendar.MONTH) == 9 && startDate.get(Calendar.DAY_OF_MONTH) == 10) {
+            mDisplayDate.setText(new StringBuilder()
+                    // Month is 0 based so add 1
+                    .append(startDate.get(Calendar.YEAR))
+                    .append(startDate.get(Calendar.MONTH) + 1)
+                    .append(startDate.get(Calendar.DAY_OF_MONTH)));
+        } else if (startDate.get(Calendar.MONTH) == 9 && startDate.get(Calendar.DAY_OF_MONTH) < 10) {
+            mDisplayDate.setText(new StringBuilder()
+                    // Month is 0 based so add 1
+                    .append(startDate.get(Calendar.YEAR))
+                    .append(startDate.get((Calendar.MONTH) + 1)+ "0")
+                    .append(startDate.get(Calendar.DAY_OF_MONTH)));
+        } else if (startDate.get(Calendar.MONTH) >= 10 && startDate.get(Calendar.DAY_OF_MONTH) < 10) {
             mDisplayDate.setText(new StringBuilder()
                     // Month is 0 based so add 1
                     .append(startDate.get(Calendar.YEAR))
                     .append((startDate.get(Calendar.MONTH) + 1) + "0")
                     .append(startDate.get(Calendar.DAY_OF_MONTH)));
+        }else if (startDate.get((Calendar.MONTH)+1) >= 10 && startDate.get(Calendar.DAY_OF_MONTH) >= 10) {
+                mDisplayDate.setText(new StringBuilder()
+                        // Month is 0 based so add 1
+                        .append(startDate.get(Calendar.YEAR))
+                        .append((startDate.get(Calendar.MONTH) + 1))
+                        .append(startDate.get(Calendar.DAY_OF_MONTH)));
         } else {
             mDisplayDate.setText(new StringBuilder()
                     // Month is 0 based so add 1
