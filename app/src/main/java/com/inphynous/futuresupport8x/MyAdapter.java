@@ -41,7 +41,6 @@ public class MyAdapter extends ArrayAdapter<Employee> {
         } else {
             gradientDrawable.setColor(R.color.green);
         }
-
         return view;
     }
 }

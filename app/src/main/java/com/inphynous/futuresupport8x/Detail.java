@@ -31,6 +31,10 @@ public class Detail {
 
     }
 
+    public Detail(int total_collected_amt) {
+
+    }
+
     public String getMonth_date() {
         return month_date;
     }

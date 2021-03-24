@@ -5,12 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
+<!--    <android.support.v7.widget.Toolbar-->
+<!--        android:id="@+id/my_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="#53BAC4"-->
+<!--        android:elevation="4dp"-->
+<!--        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+<!--        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
     <RelativeLayout
         android:id="@+id/detail"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#53BAC4"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         >
@@ -49,7 +57,7 @@
         android:layout_height="80dp"
         android:background="#A37CD0"
         android:layout_below="@+id/detail"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         >
@@ -84,7 +92,7 @@
         android:layout_height="80dp"
         android:layout_below="@+id/d2"
         android:background="#FF6986"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
         <TextView
@@ -113,13 +121,12 @@
     </RelativeLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/nav_header"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:background="@color/colorAccent"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:gravity="bottom"
         android:visibility="gone"
         android:orientation="vertical"
         android:padding="16dp"
@@ -140,12 +147,12 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     </LinearLayout>
     <RelativeLayout
-
+android:id="@+id/mir"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_below="@+id/md"
         android:background="@color/green"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
         <Button
@@ -162,11 +169,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/forward"
-            android:layout_toRightOf="@id/button5"
             android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/button5"
             />
 
         <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/loan"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/mir"
+        android:background="@color/colorAccent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <TextView
+            android:id="@+id/sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loan Record"
+            android:textColor="#050505"
+            android:textSize="40dp"
+            android:layout_centerInParent="true"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="52dp"
+            android:layout_height="40dp"
+            android:src="@drawable/forward"
+            android:layout_toRightOf="@id/sp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            />
+        <ProgressBar
+            android:id="@+id/pr1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"

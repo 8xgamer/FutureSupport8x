@@ -29,13 +29,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AccountActivity extends AppCompatActivity {
-    TextView textView,textView2;
+    TextView textView, textView2;
     String url = "http://192.168.0.170/00_fs_system2021/getdata.php";
+    String url2 = "http://192.168.0.170/00_fs_system2021/get_collected_amt.php";
     AccDetail accDetail;
-    TextView text1,text2,date1;
+    TextView text1, text2, date1;
+    Detail detail;
     Button edit_acc;
-    ArrayList<AccDetail> allDetailArray = new ArrayList<>();
-    TextView s1,s2,B1,B2,loangiven,w1,w2,t1,t2,BA;
+    ArrayList<Detail> allDetailArray = new ArrayList<>();
+    //    ArrayList<AccDetail> allDetailArray = new ArrayList<>();
+    TextView s1, s2, B1, B2, loangiven, w1, w2, t1, t2, BA;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,20 +47,22 @@ public class AccountActivity extends AppCompatActivity {
         textView = findViewById(R.id.saving);
         textView2 = findViewById(R.id.textsaving);
         t1 = findViewById(R.id.amount_W_I);
-        t2= findViewById(R.id.amount_w_i);
+        t2 = findViewById(R.id.amount_w_i);
         w1 = findViewById(R.id.Wid_A);
         w2 = findViewById(R.id.wa);
-        B1=findViewById(R.id.TN);
-        B2=findViewById(R.id.value4);
-        s1=findViewById(R.id.Ta);
-        s2=findViewById(R.id.value);
-        text1=findViewById(R.id.busysaving);
-        text2=findViewById(R.id.text2saving);
-        loangiven=findViewById(R.id.loan_Q);
-        edit_acc=findViewById(R.id.edit);
-        date1=findViewById(R.id.date2);
+        B1 = findViewById(R.id.TN);
+        B2 = findViewById(R.id.value4);
+        s1 = findViewById(R.id.Ta);
+        s2 = findViewById(R.id.value);
+        text1 = findViewById(R.id.busysaving);
+        text2 = findViewById(R.id.text2saving);
+        loangiven = findViewById(R.id.loan_Q);
+        edit_acc = findViewById(R.id.edit);
+        date1 = findViewById(R.id.date2);
         BA = findViewById(R.id.b_amt);
         getdata();
+        getcollectamt();
+
 
         edit_acc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +72,47 @@ public class AccountActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void getcollectamt() {
+
+        StringRequest request = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String success = jsonObject.getString("success");
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    System.out.println(jsonArray);
+                    for (int i = 0; i < 2; i++) {
+                        JSONObject object2 = jsonArray.getJSONObject(i);
+                        final int total_deposited_amt = object2.getInt("total_collected_amt");
+                        System.out.println(total_deposited_amt);
+
+
+                        textView.setText(String.valueOf(total_deposited_amt));
+                        System.out.println(textView);
+//                        coll_amt.setText(String.valueOf((id) * (A1+A2+A3+A4+A5+A6+A7+A8+A9+A10+A11+A12)));
+
+                        detail = new Detail(total_deposited_amt);
+                        allDetailArray.add(detail);
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(AccountActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+
+
     }
 
     private void getdata() {
@@ -78,7 +125,7 @@ public class AccountActivity extends AppCompatActivity {
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object2 = jsonArray.getJSONObject(i);
-                        final int total_deposite = object2.getInt("total_deposite");
+//                        final int total_deposite = object2.getInt("total_deposite");
                         final int total_saving_with_interest = object2.getInt("total_saving_with_interest");
                         final int available_amt_in_acc = object2.getInt("available_amt_in_acc");
                         final int withdrawable_amt = object2.getInt("Withdrawable_amt");
@@ -98,13 +145,14 @@ public class AccountActivity extends AppCompatActivity {
                         //use this detail to acces login person username
 
 
-                        if (password1.equals("LSP")){
-                        edit_acc.setVisibility(View.VISIBLE);
+                        if (password1.equals("LSP")) {
+                            edit_acc.setVisibility(View.VISIBLE);
                         }
+
                         s2.setVisibility(View.VISIBLE);
                         s2.setText(String.valueOf(available_amt_in_acc));
                         textView.setVisibility(View.VISIBLE);
-                        textView.setText(String.valueOf(total_deposite));
+//                        textView.setText(String.valueOf(total_deposite));
                         t2.setVisibility(View.VISIBLE);
                         t2.setText(String.valueOf(total_saving_with_interest));
                         w2.setVisibility(View.VISIBLE);
@@ -165,8 +213,8 @@ public class AccountActivity extends AppCompatActivity {
                             }
                         });*/
 
-                        accDetail = new AccDetail(total_deposite, total_saving_with_interest, available_amt_in_acc,backup_amount, withdrawable_amt, total_interest, loan_disbursed_qt, busy_amt_in_current_year,date);
-                        allDetailArray.add(accDetail);
+                        accDetail = new AccDetail(total_saving_with_interest, available_amt_in_acc, backup_amount, withdrawable_amt, total_interest, loan_disbursed_qt, busy_amt_in_current_year, date);
+                        allDetailArray.add(detail);
                     }
 
 
@@ -197,15 +245,17 @@ public class AccountActivity extends AppCompatActivity {
 
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.logout:
                 SessionManager sessionManager = new SessionManager(getApplicationContext());
                 sessionManager.logoutUserFromSession();
@@ -215,7 +265,8 @@ public class AccountActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    public void logout(){
+
+    public void logout() {
         Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
     }
 

@@ -79,8 +79,6 @@ public class unique extends AppCompatActivity {
                         detail = new Detail(status,loan, accountno, ifsc, bankname, username,ondate,uptodate,investedamt,currentamt);
                         allDetailArray.add(detail);
                     }
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

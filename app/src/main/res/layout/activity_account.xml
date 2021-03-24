@@ -39,9 +39,8 @@
         android:layout_below="@id/tp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="7dp"
         android:background="#2196F3"
         android:orientation="horizontal"
         android:paddingBottom="5dp">
@@ -50,18 +49,17 @@
             android:id="@+id/textsaving"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:paddingLeft="10dp"
             android:text="Total Saving"
             android:textColor="#000"
+            android:layout_centerVertical="true"
             android:textSize="15dp" />
 
         <TextView
             android:id="@+id/saving"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="175dp"
+            android:layout_alignParentEnd="true"
             android:text="0.0"
             android:textColor="#000"
             android:textSize="25dp"
@@ -69,14 +67,14 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearA_W_I"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="5dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="1dp"
         android:background="#2196F3"
         android:layout_below="@+id/lde"
         android:orientation="horizontal"
@@ -90,37 +88,37 @@
             android:textSize="15dp"
             android:paddingLeft="10dp"
             android:textColor="#000"
-            android:layout_gravity="center"
+            android:layout_centerVertical="true"
             />
         <TextView
             android:id="@+id/amount_w_i"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0.0"
-            android:layout_gravity="center"
+            android:layout_alignParentEnd="true"
             android:textSize="25dp"
             android:textColor="#000"
             android:textStyle="bold"
-            android:layout_marginLeft="30dp"/>
+            />
 
-    </LinearLayout>
-    <LinearLayout
+    </RelativeLayout>
+    <RelativeLayout
         android:id="@+id/bdown"
         android:layout_below="@+id/linearA_W_I"
         android:layout_width="match_parent"
         android:paddingBottom="5dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="1dp"
         android:layout_height="wrap_content"
-        android:background="#2196F3"
-        android:layout_marginTop="10dp">
+        android:background="#2196F3">
         <TextView
             android:id="@+id/text2saving"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Busy Amount"
             android:paddingLeft="10dp"
-            android:layout_gravity="center"
+            android:layout_centerVertical="true"
             android:textSize="15dp"
             android:textColor="#000"/>
         <TextView
@@ -128,22 +126,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0.0"
-            android:layout_gravity="center"
+            android:layout_alignParentEnd="true"
             android:textSize="25dp"
             android:textColor="#000"
-            android:textStyle="bold"
-            android:layout_marginLeft="132dp"/>
-    </LinearLayout>
-    <LinearLayout
+            android:textStyle="bold" />
+    </RelativeLayout>
+    <RelativeLayout
         android:id="@+id/cdown"
         android:layout_below="@+id/bdown"
         android:layout_width="match_parent"
         android:paddingBottom="5dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="1dp"
         android:layout_height="wrap_content"
-        android:background="#2196F3"
-        android:layout_marginTop="10dp">
+        android:background="#2196F3">
         <TextView
             android:id="@+id/Ta"
             android:layout_width="wrap_content"
@@ -152,36 +149,35 @@
             android:textSize="15dp"
             android:paddingLeft="10dp"
             android:textColor="#000"
-            android:layout_gravity="center"/>
+            android:layout_centerVertical="true"/>
         <TextView
             android:id="@+id/value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="93dp"
+            android:layout_alignParentEnd="true"
             android:text="0.0"
             android:textStyle="bold"
             android:textColor="#000"
             android:textSize="25dp"
             />
-    </LinearLayout>
-    <LinearLayout
+    </RelativeLayout>
+    <RelativeLayout
         android:id="@+id/linear_W_A"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/cdown"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="1dp"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
-        android:padding="5dp"
+        android:paddingBottom="5dp"
         android:background="#2196F3">
 
         <TextView
             android:id="@+id/Wid_A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_centerVertical="true"
             android:paddingLeft="10dp"
             android:text="Withdrawable Amount"
             android:textColor="#000"
@@ -189,33 +185,33 @@
 
         <TextView
             android:id="@+id/wa"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="98dp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentEnd="true"
             android:text="0.0"
             android:textColor="#000"
             android:textSize="25dp"
             android:textStyle="bold" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linear_I_T_N"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linear_W_A"
         android:layout_alignParentStart="true"
         android:paddingBottom="5dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="1dp"
         android:background="#2196F3">
 
         <TextView
             android:id="@+id/TN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_centerVertical="true"
             android:paddingLeft="10dp"
             android:text="Interest Till Now"
             android:textColor="#000"
@@ -225,29 +221,28 @@
             android:id="@+id/value4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="150dp"
+            android:layout_alignParentEnd="true"
             android:text="0.0"
             android:textStyle="bold"
             android:textColor="#000"
             android:textSize="25dp" />
-    </LinearLayout>
-    <LinearLayout
+    </RelativeLayout>
+    <RelativeLayout
         android:id="@+id/linear_L_D_Q"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linear_I_T_N"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="10dp"
-        android:padding="5dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="1dp"
+        android:paddingBottom="5dp"
         android:background="#2196F3">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_centerVertical="true"
             android:paddingLeft="10dp"
             android:text="Loan given to No. of members"
             android:textColor="#000"
@@ -257,30 +252,29 @@
             android:id="@+id/loan_Q"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="55dp"
+            android:layout_alignParentEnd="true"
             android:text="0.0"
             android:textStyle="bold"
             android:textColor="#000"
             android:textSize="25dp"
             />
-    </LinearLayout>
-    <LinearLayout
+    </RelativeLayout>
+    <RelativeLayout
         android:id="@+id/back_amt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linear_L_D_Q"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="10dp"
-        android:padding="5dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="1dp"
+        android:paddingBottom="5dp"
         android:background="#2196F3">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_centerVertical="true"
             android:paddingLeft="10dp"
             android:text="Backup Amount"
             android:textColor="#000"
@@ -291,11 +285,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0.0"
-            android:layout_marginStart="132dp"
+            android:layout_alignParentEnd="true"
             android:textColor="#000"
             android:textSize="25dp"
             android:textStyle="bold" />
-    </LinearLayout>
+    </RelativeLayout>
 
       <Button
         android:id="@+id/edit"
@@ -303,7 +297,7 @@
         android:layout_height="wrap_content"
           android:layout_below="@+id/back_amt"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="3dp"
         android:background="@color/colorPrimary"
         android:visibility="gone"
         android:text="Update"
@@ -321,6 +315,5 @@
         android:text="Date of update"
         android:textColor="#000"
         android:textSize="15dp" />
-
 
 </RelativeLayout>

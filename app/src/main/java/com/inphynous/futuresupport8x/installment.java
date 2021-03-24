@@ -26,8 +26,9 @@ import java.util.Map;
 
 public class installment extends AppCompatActivity {
 
-    TextView month1,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,D1,D2,D3,D4,D5,D6,D7,D8,D9,D10,D11,D12,sum1;
+    TextView month1,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,D1,D2,D3,D4,D5,D6,D7,D8,D9,D10,D11,D12,sum1,coll_amt;
     String url= "http://192.168.0.170/00_fs_system2021/get_installment_record.php";
+    String url2= "http://192.168.0.170/00_fs_system2021/get_collected_amt.php";
     Button update,edit;
     MyAdapter adapter;
     String check = "";
@@ -66,7 +67,9 @@ public class installment extends AppCompatActivity {
         sum1 = findViewById(R.id.sum);
         update = findViewById(R.id.update_installment);
         edit = findViewById(R.id.edit_installment);
+        coll_amt = findViewById(R.id.collected_amt);
         getdata();
+        getcollectedamt();
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +89,44 @@ public class installment extends AppCompatActivity {
 
     }
 
+    private void getcollectedamt() {
+        StringRequest request = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String success = jsonObject.getString("success");
+                    JSONArray jsonArray = jsonObject.getJSONArray("data");
+                    System.out.println(jsonArray);
+                    for (int i = 0; i < 2; i++) {
+                        JSONObject object2 = jsonArray.getJSONObject(i);
+                        final int total_deposited_amt = object2.getInt("total_collected_amt");
+                        System.out.println(total_deposited_amt);
+
+                        coll_amt.setText(String.valueOf(total_deposited_amt));
+                        System.out.println(coll_amt);
+//                        coll_amt.setText(String.valueOf((id) * (A1+A2+A3+A4+A5+A6+A7+A8+A9+A10+A11+A12)));
+
+                        detail = new Detail(total_deposited_amt);
+                        allDetailArray.add(detail);
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(installment.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) ;
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+
+    }
+
     private void getdata() {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -94,9 +135,9 @@ public class installment extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("data");
-                    System.out.println(jsonArray);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object2 = jsonArray.getJSONObject(i);
+                        final int id = object2.getInt("idno");
                         final String month_date = object2.getString("month");
                         final int A1 = object2.getInt("t1");
                         final int A2 = object2.getInt("t2");
@@ -123,6 +164,7 @@ public class installment extends AppCompatActivity {
                         String date11 = object2.getString("dat11");
                         String date12 = object2.getString("dat12");
                         final int total_sum = object2.getInt("sumofmonth");
+
 
                         SessionManager sessionManager = new SessionManager(getApplicationContext());
                         HashMap<String, String> userDetails = sessionManager.getUserDetailFromSesion();
@@ -163,11 +205,13 @@ public class installment extends AppCompatActivity {
                         D11.setText(String.valueOf(date11));
                         D12.setText(String.valueOf(date12));
                         sum1.setText(String.valueOf(A1+A2+A3+A4+A5+A6+A7+A8+A9+A10+A11+A12));
+//                        coll_amt.setText(String.valueOf((id) * (A1+A2+A3+A4+A5+A6+A7+A8+A9+A10+A11+A12)));
+
 
                         detail = new Detail(month_date,A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11,A12,date1,date2,date3,date4,date5,date6,date7,date8,date9,date10,date11,date12,total_sum);
                         allDetailArray.add(detail);
 
-    }
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -195,7 +239,6 @@ public class installment extends AppCompatActivity {
                 SessionManager sessionManager = new SessionManager(getApplicationContext());
                 sessionManager.logoutUserFromSession();
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }

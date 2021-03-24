@@ -42,21 +42,15 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="9dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="0dp"
         android:layout_marginEnd="7dp"
-        android:layout_marginRight="8dp"
-        android:paddingBottom="5dp">
+        >
 
         <TextView
             android:id="@+id/textsaving"
             android:layout_width="109dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_centerVertical="true"
             android:paddingLeft="10dp"
             android:text="Total Saving"
             android:textColor="#000"
@@ -68,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/textsaving"
             android:layout_alignParentEnd="true"
-            android:hint="Enter Amount"
+            android:hint="DO NOT ENTER ANYTHING"
             android:textColor="#000"
             android:textSize="15dp" />
 
@@ -78,7 +72,6 @@
         android:id="@+id/linearA_W_I"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="5dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="01dp"
@@ -112,7 +105,6 @@
         android:id="@+id/bdown"
         android:layout_below="@+id/linearA_W_I"
         android:layout_width="match_parent"
-        android:paddingBottom="5dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_height="wrap_content"
@@ -142,7 +134,6 @@
         android:id="@+id/cdown"
         android:layout_below="@+id/bdown"
         android:layout_width="match_parent"
-        android:paddingBottom="5dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_height="wrap_content"
@@ -177,7 +168,6 @@
         android:layout_marginRight="8dp"
         android:layout_alignParentStart="true"
         android:layout_marginTop="01dp"
-        android:padding="5dp"
         android:background="#2196F3">
 
         <TextView
@@ -208,7 +198,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/linear_W_A"
         android:layout_alignParentStart="true"
-        android:paddingBottom="5dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="01dp"
@@ -243,7 +232,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="01dp"
-        android:padding="5dp"
         android:background="#2196F3">
 
         <TextView
@@ -275,7 +263,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="01dp"
-        android:padding="5dp"
         android:background="#2196F3">
 
         <TextView
@@ -314,6 +301,7 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:text="Update"
+            android:layout_marginTop="2dp"
             android:textAlignment="center"
             android:textSize="16dp"
             android:textStyle="italic" />

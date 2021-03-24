@@ -103,7 +103,7 @@ public class update_installment_record extends AppCompatActivity {
 
         });
 
-        onClickTime(mDisplayDate, startDate);
+
 
         Da1.setOnClickListener(new OnClickListener() {
             @Override
@@ -112,6 +112,7 @@ public class update_installment_record extends AppCompatActivity {
 
             }
         });
+        onClickTime(mDisplayDate, startDate);
         onClickTime(Da1, startDate);
 
 //        updateDisplay(mDisplayDate, startDate);
@@ -342,6 +343,7 @@ public class update_installment_record extends AppCompatActivity {
                         String date10 = object2.getString("dat10");
                         String date11 = object2.getString("dat11");
                         String date12 = object2.getString("dat12");
+
                         final int total_sum = object2.getInt("sumofmonth");
 
                         SessionManager sessionManager = new SessionManager(getApplicationContext());
@@ -376,9 +378,8 @@ public class update_installment_record extends AppCompatActivity {
                         D10.setText(String.valueOf(date10));
                         D11.setText(String.valueOf(date11));
                         D12.setText(String.valueOf(date12));
-
                         sum1.setText(String.valueOf(total_sum));
-                        System.out.println("hello all the menu" + D11);
+                        System.out.println("hello all the menu" + D12);
 
                         detail = new Detail(month_date, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, date1, date2, date3, date4, date5, date6, date7, date8, date9, date10, date11, date12, total_sum);
                         allDetailArray.add(detail);
@@ -521,53 +522,42 @@ public class update_installment_record extends AppCompatActivity {
     }
 
     private void onClickTime(final TextView mDisplayDate, Calendar startDate) {
+        // this code is for adding 0 in a single digit of date and month
+        //code start :{
+
         if (startDate.get(Calendar.MONTH) < 9 && startDate.get(Calendar.DAY_OF_MONTH) < 10) {
             mDisplayDate.setText(new StringBuilder()
                     // Month is 0 based so add 1
                     .append(startDate.get(Calendar.YEAR) + "0")
                     .append((startDate.get(Calendar.MONTH) + 1) + "0")
                     .append(startDate.get(Calendar.DAY_OF_MONTH)));
-        } else if (startDate.get(Calendar.MONTH) < 9 && startDate.get(Calendar.DAY_OF_MONTH) >= 10) {
+        } else if (startDate.get(Calendar.MONTH) <9 && startDate.get(Calendar.DAY_OF_MONTH) >= 10) {
             mDisplayDate.setText(new StringBuilder()
                     // Month is 0 based so add 1
                     .append(startDate.get(Calendar.YEAR) + "0")
                     .append(startDate.get(Calendar.MONTH) + 1)
                     .append(startDate.get(Calendar.DAY_OF_MONTH)));
-        } else if (startDate.get(Calendar.MONTH) == 9 && startDate.get(Calendar.DAY_OF_MONTH) == 10) {
-            mDisplayDate.setText(new StringBuilder()
-                    // Month is 0 based so add 1
-                    .append(startDate.get(Calendar.YEAR))
-                    .append(startDate.get(Calendar.MONTH) + 1)
-                    .append(startDate.get(Calendar.DAY_OF_MONTH)));
-        } else if (startDate.get(Calendar.MONTH) == 9 && startDate.get(Calendar.DAY_OF_MONTH) < 10) {
-            mDisplayDate.setText(new StringBuilder()
-                    // Month is 0 based so add 1
-                    .append(startDate.get(Calendar.YEAR))
-                    .append(startDate.get((Calendar.MONTH) + 1)+ "0")
-                    .append(startDate.get(Calendar.DAY_OF_MONTH)));
-        } else if (startDate.get(Calendar.MONTH) >= 10 && startDate.get(Calendar.DAY_OF_MONTH) < 10) {
+        }
+
+        else if (startDate.get(Calendar.MONTH) > 8 && startDate.get(Calendar.DAY_OF_MONTH) < 10) {
             mDisplayDate.setText(new StringBuilder()
                     // Month is 0 based so add 1
                     .append(startDate.get(Calendar.YEAR))
                     .append((startDate.get(Calendar.MONTH) + 1) + "0")
                     .append(startDate.get(Calendar.DAY_OF_MONTH)));
-        }else if (startDate.get((Calendar.MONTH)+1) >= 10 && startDate.get(Calendar.DAY_OF_MONTH) >= 10) {
-                mDisplayDate.setText(new StringBuilder()
-                        // Month is 0 based so add 1
-                        .append(startDate.get(Calendar.YEAR))
-                        .append((startDate.get(Calendar.MONTH) + 1))
-                        .append(startDate.get(Calendar.DAY_OF_MONTH)));
-        } else {
+        }
+        else {
             mDisplayDate.setText(new StringBuilder()
                     // Month is 0 based so add 1
                     .append(startDate.get(Calendar.YEAR))
                     .append(startDate.get(Calendar.MONTH) + 1)
                     .append(startDate.get(Calendar.DAY_OF_MONTH)));
         }
+        System.out.println(mDisplayDate);
+// } code End :this code is for adding 0 in a single digit of date and month
 
-    }
 
-    ;
+    };
 
 
     @SuppressWarnings("deprecation")

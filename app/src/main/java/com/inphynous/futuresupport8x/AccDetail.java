@@ -11,7 +11,7 @@ public class AccDetail {
     int date;
     int backup_amount;
 
-    public AccDetail(int total_deposite, int total_saving_with_interest,int backup_amount, int available_amt_in_acc, int withdrawable_amt, int total_interest, int loan_disbursed_qt, int busy_amt_in_current_year, int date) {
+    public AccDetail( int total_saving_with_interest,int backup_amount, int available_amt_in_acc, int withdrawable_amt, int total_interest, int loan_disbursed_qt, int busy_amt_in_current_year, int date) {
         this.total_deposite = total_deposite;
         this.total_saving_with_interest = total_saving_with_interest;
         this.available_amt_in_acc = available_amt_in_acc;

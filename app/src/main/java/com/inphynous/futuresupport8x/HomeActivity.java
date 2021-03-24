@@ -14,11 +14,10 @@ import android.os.Bundle;
 import java.util.HashMap;
 
 public class HomeActivity extends AppCompatActivity {
-    RelativeLayout acdetail, pDetail, Mdetail;
+    RelativeLayout acdetail, pDetail, Mdetail,loan1;
     ProgressBar progressBar,progressBar2,progressBar3;
     TextView accdetail,pdata,mdata;
     Button button;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +33,8 @@ public class HomeActivity extends AppCompatActivity {
         progressBar2 = findViewById(R.id.progress2);
         progressBar3 = findViewById(R.id.progress3);
         button = findViewById(R.id.button5);
+        loan1 = findViewById(R.id.loan);
+
 
 
         SessionManager sessionManager = new SessionManager(this);
@@ -85,6 +86,13 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this,installment.class);
                 startActivity(intent);
+            }
+        });
+        loan1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent loan = new Intent(HomeActivity.this, Loan_status.class);
+                startActivity(loan);
             }
         });
     }
