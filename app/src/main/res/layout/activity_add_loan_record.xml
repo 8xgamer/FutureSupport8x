@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Add_loan_record">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        ------- here RelativeLayout ------
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TableRow>
+            <TextView
+                android:id="@+id/create_head"
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="ADD NEW RECORD"
+                android:textColor="@color/brown"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:visibility="gone"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/update_head"
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:layout_marginTop="1dp"
+                android:textColor="@color/brown"
+                android:text="UPDATE RECORD"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:visibility="gone"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow android:id="@+id/tr1">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="NAME "
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+<!--            <EditText-->
+<!--                android:id="@+id/name_1"-->
+<!--                android:hint="Enter Name"-->
+<!--                android:textAlignment="textStart"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:textSize="20dp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:padding="2dp"-->
+<!--                android:layout_weight="2"-->
+<!--                android:layout_column="1"/>-->
+            <Spinner
+                android:id="@+id/spinner_member"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_weight="2"
+                android:spinnerMode="dialog"
+                android:layout_gravity="center_vertical" />
+            <Button
+                android:id="@+id/btn_getdata"
+                android:layout_width="wrap_content"
+                android:padding="2dp"
+                android:text="GET DATA "
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:visibility="gone"
+                android:textStyle="bold"/>
+
+</TableRow>
+        <TableRow android:id="@+id/tr2">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="Loan Amount"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/loan_amt"
+                android:hint="Amount"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:inputType="number"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow android:id="@+id/tr3">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="From Date"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/from_date1"
+                android:hint="select Date"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow android:id="@+id/tr4">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="Upto Date"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/upto_date1"
+                android:hint="select Date"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow android:id="@+id/tr5">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="No of Month"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/spinner_month"
+                android:hint="Enter Number of Month"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:inputType="number"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow android:id="@+id/tr6">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="Interest"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/Int_on_loan"
+                android:hint="Amount"
+                android:text="0"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:inputType="number"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow android:id="@+id/tr7"
+            android:layout_width="match_parent"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="First return"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/returned_amt_1"
+                android:hint="Amount"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:text="0"
+                android:inputType="number"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow android:id="@+id/tr8"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="FR Date"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/date1"
+                android:hint="select Date"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow android:id="@+id/tr9"
+            android:layout_width="match_parent"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="Second return"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/returned_amt_2"
+                android:hint="Amount"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:inputType="number"
+                android:padding="2dp"
+                android:text="0"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow android:id="@+id/tr10"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="SR Date"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/date2"
+                android:hint="select Date"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow android:id="@+id/tr11"
+            android:layout_width="match_parent"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="Third return"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/returned_amt_3"
+                android:hint="Amount"
+                android:text="0"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:inputType="number"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow android:id="@+id/tr12"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="TR Date"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/date3"
+                android:hint="select Date"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow android:id="@+id/tr13">
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="Rem Amt"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <EditText
+                android:id="@+id/remaining_amt"
+                android:hint="Amount"
+                android:text="0"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:inputType="number"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+
+
+        <TableRow android:id="@+id/tr14">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:text="Status"
+                android:textAlignment="textStart"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/status_view"
+                android:textAlignment="textStart"
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:layout_column="1"/>
+
+        </TableRow>
+        <TableRow>
+            <Button
+                android:id="@+id/add_new"
+                android:text="ADD RECORD"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/brown"
+                android:textSize="25dp"
+                android:visibility="gone"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                />
+            <Button
+                android:id="@+id/update_old"
+                android:text="UPDATE RECORD"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="2dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/brown"
+                android:textSize="25dp"
+                android:visibility="gone"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                />
+
+        </TableRow>
+
+    </TableLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -184,7 +184,7 @@
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/wa"
+            android:id="@+id/w2"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_alignParentEnd="true"
@@ -284,11 +284,95 @@
             android:id="@+id/b_amt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0.0"
+            android:text="10000"
             android:layout_alignParentEnd="true"
             android:textColor="#000"
             android:textSize="25dp"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/l1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+             />
+        <TextView
+            android:id="@+id/l2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/l3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/l4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/l5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/l6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/l7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/l8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/l9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/l10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/l11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/l12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
     </RelativeLayout>
 
       <Button
@@ -300,6 +384,7 @@
         android:layout_marginTop="3dp"
         android:background="@color/colorPrimary"
         android:visibility="gone"
+          android:textColor="@color/white"
         android:text="Update"
         android:textAlignment="center"
         android:textSize="20dp"

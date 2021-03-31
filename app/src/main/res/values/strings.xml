@@ -18,9 +18,53 @@
     <string name="action_settings">Settings</string>
 
 
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="title_activity_left_navigation">left_navigation</string>
+
+    <string-array name="Member">
+        <item>SELECT MEMBER</item>
+        <item>LAXMAN</item>
+        <item>BHUSHAN</item>
+        <item>SANDIP</item>
+        <item>RAHUL</item>
+        <item>BHAGWAN</item>
+        <item>SACHIN</item>
+        <item>YOGESH</item>
+        <item>KRUSHNA</item>
+        <item>TUSHAR</item>
+        <item>PRADYUM</item>
+        <item>SHUBHAM</item>
+        <item>JAGDISH</item>
+        <item>OTHER</item>
+    </string-array>
+
+
+    <string-array name="status">
+        <item>Select status</item>
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="month">
+        <item>Select Due Month</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="Month_Name">
+        <item>Select Month</item>
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
 </resources>

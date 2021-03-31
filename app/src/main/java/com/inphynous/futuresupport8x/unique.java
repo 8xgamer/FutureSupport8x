@@ -1,7 +1,6 @@
 package com.inphynous.futuresupport8x;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,10 +43,10 @@ public class unique extends AppCompatActivity {
 
         if (check.equals("pd")) {
             employeeArrayList.clear();
-            getdata1();
+            personalDetail();
         } else if (check.equals("md")) {
             employeeArrayList.clear();
-            getdata();
+            memberDetail();
         }
         getdata2();
 
@@ -78,6 +77,49 @@ public class unique extends AppCompatActivity {
                         int currentamt = object2.getInt("current_amount");
                         detail = new Detail(status,loan, accountno, ifsc, bankname, username,ondate,uptodate,investedamt,currentamt);
                         allDetailArray.add(detail);
+
+
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                String selected = ((TextView) view.findViewById(R.id.txt_name)).getText().toString();
+
+                        Bundle arg = new Bundle();
+                        arg.putString("name", selected);
+                        for (Detail member : allDetailArray) {
+                            if (member.getUsername().equals(selected)) {
+
+                                fragacc = member.getAccountno();
+                                fragamt = member.getLoan();
+                                fragifsc = member.getIfsc();
+                                fragbank = member.getBankname();
+                                fragstatus = member.isStatus();
+                                fragondate = member.getOndate();
+                                fraguptodate = member.getUptodate();
+                                fraginvestedamt = member.getInvestedamt();
+                                fragcurrentamt = member.getCurrentamt();
+
+                                arg.putString("fragacc", fragacc);
+                                arg.putString("fragifsc", fragifsc);
+                                arg.putString("fragbank", fragbank);
+                                arg.putInt("loan", fragamt);
+                                arg.putBoolean("fragstatus", fragstatus);
+                                arg.putString("fragondate", fragondate);
+                                arg.putString("fraguptodate", fraguptodate);
+                                arg.putInt("fraginvestedamt",fraginvestedamt);
+                                arg.putInt("fragcurrentamt",fragcurrentamt);
+                                arg.putString("key","2021");
+                            }
+
+                        }
+
+
+
+                        MyDialogueFragment userPopUp = new MyDialogueFragment();
+                        userPopUp.setArguments(arg);
+                        userPopUp.show(getSupportFragmentManager(), "MyFragment");
+                            }
+                        });
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -97,13 +139,12 @@ public class unique extends AppCompatActivity {
 
     }
 
-    private void getdata1() {
+    private void personalDetail() {
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 employeeArrayList.clear();
                 try {
-
                     JSONObject jsonObject = new JSONObject(response);
                     final JSONArray jsonArray = jsonObject.getJSONArray("data");
 
@@ -123,47 +164,6 @@ public class unique extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
 
 
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                            String selected = ((TextView) view.findViewById(R.id.txt_name)).getText().toString();
-
-                            Bundle arg = new Bundle();
-                            arg.putString("name", selected);
-                            for (Detail member : allDetailArray) {
-                                if (member.getUsername().equals(selected)) {
-
-                                    fragacc = member.getAccountno();
-                                    fragamt = member.getLoan();
-                                    fragifsc = member.getIfsc();
-                                    fragbank = member.getBankname();
-                                    fragstatus = member.isStatus();
-                                    fragondate = member.getOndate();
-                                    fraguptodate = member.getUptodate();
-                                    fraginvestedamt = member.getInvestedamt();
-                                    fragcurrentamt = member.getCurrentamt();
-
-                                    arg.putString("fragacc", fragacc);
-                                    arg.putString("fragifsc", fragifsc);
-                                    arg.putString("fragbank", fragbank);
-                                    arg.putInt("loan", fragamt);
-                                    arg.putBoolean("fragstatus", fragstatus);
-                                    arg.putString("fragondate", fragondate);
-                                    arg.putString("fraguptodate", fraguptodate);
-                                    arg.putInt("fraginvestedamt",fraginvestedamt);
-                                    arg.putInt("fragcurrentamt",fragcurrentamt);
-                                    arg.putString("key","2021");
-                                }
-
-                            }
-                            arg.putString("fullname", fullname);
-
-                            MyDialogueFragment userPopUp = new MyDialogueFragment();
-                            userPopUp.setArguments(arg);
-                            userPopUp.show(getSupportFragmentManager(), "MyFragment");
-
-                        }
-                    });
 
 
                 } catch (JSONException e) {
@@ -178,6 +178,7 @@ public class unique extends AppCompatActivity {
                 Toast.makeText(unique.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }) {
+
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
@@ -194,7 +195,7 @@ public class unique extends AppCompatActivity {
     }
 
 
-    public void getdata() {
+    public void memberDetail() {
 
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -266,8 +267,10 @@ public class unique extends AppCompatActivity {
                                         arg.putInt("fraginvestedamt",fraginvestedamt);
                                         arg.putInt("fragcurrentamt",fragcurrentamt);
 
+
                                     }
                                 }
+
                                 final MyDialogueFragment userPopUp = new MyDialogueFragment();
                                 userPopUp.setArguments(arg);
                                 userPopUp.show(getSupportFragmentManager(), "MyFragment");

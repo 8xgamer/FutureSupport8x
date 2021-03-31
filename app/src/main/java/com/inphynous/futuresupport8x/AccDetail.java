@@ -11,7 +11,7 @@ public class AccDetail {
     int date;
     int backup_amount;
 
-    public AccDetail( int total_saving_with_interest,int backup_amount, int available_amt_in_acc, int withdrawable_amt, int total_interest, int loan_disbursed_qt, int busy_amt_in_current_year, int date) {
+    public AccDetail(int total_saving_with_interest, int backup_amount, int date, int i, int i1, int i2, int loan_disbursed_qty, int date1) {
         this.total_deposite = total_deposite;
         this.total_saving_with_interest = total_saving_with_interest;
         this.available_amt_in_acc = available_amt_in_acc;
@@ -19,8 +19,13 @@ public class AccDetail {
         this.total_interest = total_interest;
         this.loan_disbursed_qt = loan_disbursed_qt;
         this.busy_amt_in_current_year = busy_amt_in_current_year;
-        this.date = date;
+        this.date = this.date;
         this.backup_amount = backup_amount;
+
+    }
+
+    public AccDetail(int total_deposited_amt, int busy_amount, int backup_amount, int i, int i1, int i2, int loan_disbursed_qty) {
+
 
     }
 

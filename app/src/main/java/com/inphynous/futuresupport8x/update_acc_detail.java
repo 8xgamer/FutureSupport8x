@@ -2,16 +2,16 @@
 package com.inphynous.futuresupport8x;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +19,7 @@ import java.util.Map;
 public class update_acc_detail extends AppCompatActivity {
     EditText total_deposite1,total_amount1, amt_in_acc1,backup_amt1,Wid_amt1,total_interest1,loan_qty1,busy_amt1;
     String url = "http://192.168.0.170/00_fs_system2021/update_account.php";
+    TextView l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12;
     Button update;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,8 @@ public class update_acc_detail extends AppCompatActivity {
         final String total_interest = total_interest1.getText().toString().trim();
         final String loan_qty = loan_qty1.getText().toString().trim();
         final String busy_amt = busy_amt1.getText().toString().trim();
+
+
 
         if (total_deposite.isEmpty()) {
             Toast.makeText(this, "Enter Amount", Toast.LENGTH_SHORT).show();
@@ -86,6 +89,7 @@ public class update_acc_detail extends AppCompatActivity {
                     Intent intent = new Intent(update_acc_detail.this, AccountActivity.class);
                     startActivity(intent);
 
+
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -95,14 +99,15 @@ public class update_acc_detail extends AppCompatActivity {
             }){
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("total_deposite", total_deposite);
-                    params.put("total_saving_with_interest", total_saving_with_interest);
-                    params.put("available_amt_in_acc", amt_in_acc);
+//                    params.put("total_deposite", total_deposite);
+//                    params.put("total_saving_with_interest", total_saving_with_interest);
+//                    params.put("available_amt_in_acc", amt_in_acc);
                     params.put("backup_amt", backup_amt);
-                    params.put("Withdrawable_amt", Wid_amt);
-                    params.put("total_interest", total_interest);
+//                    params.put("Withdrawable_amt", Wid_amt);
+//                    params.put("total_interest", total_interest);
                     params.put("loan_qty", loan_qty);
-                    params.put("busy_amt", busy_amt);
+//                    params.put("busy_amt", busy_amt);
+
 
 
                     return params;

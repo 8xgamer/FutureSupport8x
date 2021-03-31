@@ -14,6 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Installment_history"></activity>
+        <activity android:name=".Update_member_installment" />
+        <activity
+            android:name=".Add_loan_record"
+            android:parentActivityName=".Loan_status" />
         <activity
             android:name=".Loan_status"
             android:parentActivityName=".AccountActivity" />
@@ -63,6 +68,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

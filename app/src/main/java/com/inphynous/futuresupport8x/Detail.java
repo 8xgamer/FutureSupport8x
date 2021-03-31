@@ -31,9 +31,7 @@ public class Detail {
 
     }
 
-    public Detail(int total_collected_amt) {
 
-    }
 
     public String getMonth_date() {
         return month_date;
@@ -243,7 +241,7 @@ public class Detail {
         this.date12 = date12;
     }
 
-    public Detail(String month_date, int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10, int a11, int a12, String date1, String date2, String date3, String date4, String date5, String date6, String date7, String date8, String date9, String date10, String date11, String date12, int total_sum) {
+    public Detail(int loan_amt, int ondate, int month2, int interest, int return_amt, int a1) {
         this.month_date = month_date;
         this.a1 = a1;
         this.a2 = a2;
@@ -269,7 +267,7 @@ public class Detail {
         this.date10 = date10;
         this.date11 = date11;
         this.date12 = date12;
-        this.sum = total_sum;
+        this.sum = sum;
 
     }
 

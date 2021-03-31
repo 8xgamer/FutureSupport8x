@@ -3,14 +3,11 @@ package com.inphynous.futuresupport8x;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.icu.text.Transliterator;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -18,7 +15,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -28,8 +24,8 @@ import java.util.Map;
 public class update_installment_record extends AppCompatActivity {
     EditText T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12;
     TextView month1, sum1, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12;
-    Button update, edit;
-    String url = "http://192.168.0.170/00_fs_system2021/update_installment_sheet.php";
+    Button update, edit,get_record;
+    String url = "http://192.168.0.170/00_fs_system2021/create_installment_sheet.php";
     String url2 = "http://192.168.0.170/00_fs_system2021/get_installment_record.php";
     String url3 = "http://192.168.0.170/00_fs_system2021/update_inst_process.php";
 
@@ -40,10 +36,14 @@ public class update_installment_record extends AppCompatActivity {
     static final int DATE_DIALOG_ID = 0;
     private TextView activeDateDisplay;
     Calendar activeDate;
+    ArrayList<Detail4> allDetailArray4 = new ArrayList<>();
     MyAdapter adapter;
+    String text1;
     String check = "";
     ArrayList<Detail> allDetailArray = new ArrayList<>();
+    ArrayList<Detail3> allDetailArray3 = new ArrayList<>();
     Detail detail;
+    Detail3 detail3;
     public static ArrayList<Employee> employeeArrayList = new ArrayList<>();
 
     @Override
@@ -75,11 +75,12 @@ public class update_installment_record extends AppCompatActivity {
         D10 = findViewById(R.id.date10);
         D11 = findViewById(R.id.date11);
         D12 = findViewById(R.id.date12);
+
         sum1 = findViewById(R.id.addtion_total);
         update = findViewById(R.id.update_installment);
+        get_record=findViewById(R.id.get_record);
         edit = findViewById(R.id.edit_installment);
         check = getIntent().getStringExtra("check");
-
         mDisplayDate = (TextView) findViewById(R.id.month);
         Da1 = (TextView) findViewById(R.id.date1);
         Da2 = (TextView) findViewById(R.id.date2);
@@ -94,14 +95,16 @@ public class update_installment_record extends AppCompatActivity {
         Da11 = (TextView) findViewById(R.id.date11);
         Da12 = (TextView) findViewById(R.id.date12);
 
-        final Calendar startDate = Calendar.getInstance();
-        mDisplayDate.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDateDialogue(mDisplayDate, startDate);
-            }
+//
 
-        });
+        final Calendar startDate = Calendar.getInstance();
+//        mDisplayDate.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showDateDialogue(mDisplayDate, startDate);
+//
+//            }
+//        });
 
 
 
@@ -112,9 +115,8 @@ public class update_installment_record extends AppCompatActivity {
 
             }
         });
-        onClickTime(mDisplayDate, startDate);
+//        onClickTime(mDisplayDate, startDate);
         onClickTime(Da1, startDate);
-
 //        updateDisplay(mDisplayDate, startDate);
         Da2.setOnClickListener(new OnClickListener() {
             @Override
@@ -193,7 +195,7 @@ public class update_installment_record extends AppCompatActivity {
             }
         });
         onClickTime(Da12, startDate);
-        adapter = new MyAdapter(this, employeeArrayList);
+//        adapter = new MyAdapter(this, employeeArrayList);
         if (check.equals("create")) {
             employeeArrayList.clear();
             update.setOnClickListener(new OnClickListener() {
@@ -201,14 +203,12 @@ public class update_installment_record extends AppCompatActivity {
                 public void onClick(View v) {
                     insertdata();
                     finish();
-
                 }
             });
 
         } else {
             employeeArrayList.clear();
             update();
-
             update.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -217,12 +217,111 @@ public class update_installment_record extends AppCompatActivity {
             });
 
         }
+    }
 
+    private void get_previous_record() {
+        if (text1.equals("Select Month")) {
+            Toast.makeText(this, "SELECT MONTH", Toast.LENGTH_SHORT).show();
+        } else {
+            StringRequest request = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        JSONArray jsonArray = jsonObject.getJSONArray("data");
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object2 = jsonArray.getJSONObject(i);
+//                            final int id = object2.getInt("idno");
+                            final String month_date = object2.getString("month");
+                            final int A1 = object2.getInt("t1");
+                            final int A2 = object2.getInt("t2");
+                            final int A3 = object2.getInt("t3");
+                            final int A4 = object2.getInt("t4");
+                            final int A5 = object2.getInt("t5");
+                            final int A6 = object2.getInt("t6");
+                            final int A7 = object2.getInt("t7");
+                            final int A8 = object2.getInt("t8");
+                            final int A9 = object2.getInt("t9");
+                            final int A10 = object2.getInt("t10");
+                            final int A11 = object2.getInt("t11");
+                            final int A12 = object2.getInt("t12");
+                            String date1 = object2.getString("dat1");
+                            String date2 = object2.getString("dat2");
+                            String date3 = object2.getString("dat3");
+                            String date4 = object2.getString("dat4");
+                            String date5 = object2.getString("dat5");
+                            String date6 = object2.getString("dat6");
+                            String date7 = object2.getString("dat7");
+                            String date8 = object2.getString("dat8");
+                            String date9 = object2.getString("dat9");
+                            String date10 = object2.getString("dat10");
+                            String date11 = object2.getString("dat11");
+                            String date12 = object2.getString("dat12");
+
+                            month1.setText(month_date);
+                            T1.setText(String.valueOf(A1));
+                            T2.setText(String.valueOf(A2));
+                            T3.setText(String.valueOf(A3));
+                            T4.setText(String.valueOf(A4));
+                            T5.setText(String.valueOf(A5));
+                            T6.setText(String.valueOf(A6));
+                            T7.setText(String.valueOf(A7));
+                            T8.setText(String.valueOf(A8));
+                            T9.setText(String.valueOf(A9));
+                            T10.setText(String.valueOf(A10));
+                            T11.setText(String.valueOf(A11));
+                            T12.setText(String.valueOf(A12));
+                            D1.setText(String.valueOf(date1));
+                            D2.setText(String.valueOf(date2));
+                            D3.setText(String.valueOf(date3));
+                            D4.setText(String.valueOf(date4));
+                            D5.setText(String.valueOf(date5));
+                            D6.setText(String.valueOf(date6));
+                            D7.setText(String.valueOf(date7));
+                            D8.setText(String.valueOf(date8));
+                            D9.setText(String.valueOf(date9));
+                            D10.setText(String.valueOf(date10));
+                            D11.setText(String.valueOf(date11));
+                            D12.setText(String.valueOf(date12));
+                            sum1.setText(String.valueOf(A1+A2+A3+A4+A5+A6+A7+A8+A9+A10+A11+A12));
+
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+
+
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(update_installment_record.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("MONTH", text1);
+//                    params.put("id_for_verification", "get_loan_record");
+
+                    return params;
+                }
+            };
+
+
+            RequestQueue requestQueue = Volley.newRequestQueue(update_installment_record.this);
+            requestQueue.add(request);
+
+        }
 
     }
 
     private void update_in_process() {
-        final String month = month1.getText().toString().trim();
+//        final String month = month1.getText().toString().trim();
         final String t1 = T1.getText().toString().trim();
         final String t2 = T2.getText().toString().trim();
         final String t3 = T3.getText().toString().trim();
@@ -235,18 +334,18 @@ public class update_installment_record extends AppCompatActivity {
         final String t10 = T10.getText().toString().trim();
         final String t11 = T11.getText().toString().trim();
         final String t12 = T12.getText().toString().trim();
-        final String d1 = D1.getText().toString().trim();
-        final String d2 = D2.getText().toString().trim();
-        final String d3 = D3.getText().toString().trim();
-        final String d4 = D4.getText().toString().trim();
-        final String d5 = D5.getText().toString().trim();
-        final String d6 = D6.getText().toString().trim();
-        final String d7 = D7.getText().toString().trim();
-        final String d8 = D8.getText().toString().trim();
-        final String d9 = D9.getText().toString().trim();
-        final String d10 = D10.getText().toString().trim();
-        final String d11 = D11.getText().toString().trim();
-        final String d12 = D12.getText().toString().trim();
+//        final String d1 = D1.getText().toString().trim();
+//        final String d2 = D2.getText().toString().trim();
+//        final String d3 = D3.getText().toString().trim();
+//        final String d4 = D4.getText().toString().trim();
+//        final String d5 = D5.getText().toString().trim();
+//        final String d6 = D6.getText().toString().trim();
+//        final String d7 = D7.getText().toString().trim();
+//        final String d8 = D8.getText().toString().trim();
+//        final String d9 = D9.getText().toString().trim();
+//        final String d10 = D10.getText().toString().trim();
+//        final String d11 = D11.getText().toString().trim();
+//        final String d12 = D12.getText().toString().trim();
 
         StringRequest request = new StringRequest(Request.Method.POST, url3, new Response.Listener<String>() {
             public void onResponse(String response) {
@@ -274,7 +373,7 @@ public class update_installment_record extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("month", month);
+//                params.put("month", month);
                 params.put("t1", t1);
                 params.put("t2", t2);
                 params.put("t3", t3);
@@ -287,18 +386,18 @@ public class update_installment_record extends AppCompatActivity {
                 params.put("t10", t10);
                 params.put("t11", t11);
                 params.put("t12", t12);
-                params.put("dat1", d1);
-                params.put("dat2", d2);
-                params.put("dat3", d3);
-                params.put("dat4", d4);
-                params.put("dat5", d5);
-                params.put("dat6", d6);
-                params.put("dat7", d7);
-                params.put("dat8", d8);
-                params.put("dat9", d9);
-                params.put("dat10", d10);
-                params.put("dat11", d11);
-                params.put("dat12", d12);
+//                params.put("dat1", d1);
+//                params.put("dat2", d2);
+//                params.put("dat3", d3);
+//                params.put("dat4", d4);
+//                params.put("dat5", d5);
+//                params.put("dat6", d6);
+//                params.put("dat7", d7);
+//                params.put("dat8", d8);
+//                params.put("dat9", d9);
+//                params.put("dat10", d10);
+//                params.put("dat11", d11);
+//                params.put("dat12", d12);
                 params.put("sum", String.valueOf(Integer.parseInt(t1) + Integer.parseInt(t2) + Integer.parseInt(t3) + Integer.parseInt(t4) + Integer.parseInt(t5) + Integer.parseInt(t6) + Integer.parseInt(t7) + Integer.parseInt(t8) + Integer.parseInt(t9) + Integer.parseInt(t10) + Integer.parseInt(t11) + Integer.parseInt(t12)));
                 return params;
             }
@@ -346,13 +445,6 @@ public class update_installment_record extends AppCompatActivity {
 
                         final int total_sum = object2.getInt("sumofmonth");
 
-                        SessionManager sessionManager = new SessionManager(getApplicationContext());
-                        HashMap<String, String> userDetails = sessionManager.getUserDetailFromSesion();
-                        String username = userDetails.get(SessionManager.KEY_FULLNAME);
-                        String password1 = userDetails.get(SessionManager.KEY_USERNAME);
-
-                        //use this detail to acces login person username
-
                         month1.setText(month_date);
                         T1.setText(String.valueOf(A1));
                         T2.setText(String.valueOf(A2));
@@ -381,9 +473,6 @@ public class update_installment_record extends AppCompatActivity {
                         sum1.setText(String.valueOf(total_sum));
                         System.out.println("hello all the menu" + D12);
 
-                        detail = new Detail(month_date, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, date1, date2, date3, date4, date5, date6, date7, date8, date9, date10, date11, date12, total_sum);
-                        allDetailArray.add(detail);
-
                     }
 
                 } catch (JSONException e) {
@@ -403,7 +492,8 @@ public class update_installment_record extends AppCompatActivity {
     }
 
     private void insertdata() {
-        final String month = month1.getText().toString().trim();
+        month1.setVisibility(View.VISIBLE);
+//        final String month = month1.getText().toString().trim();
         final String t1 = T1.getText().toString().trim();
         final String t2 = T2.getText().toString().trim();
         final String t3 = T3.getText().toString().trim();
@@ -456,10 +546,8 @@ public class update_installment_record extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String, String> params = new HashMap<String, String>();
-
-                System.out.println(d1);
                 params.put("user", "insert_new");
-                params.put("month", month);
+//                params.put("month", month);
                 params.put("t1", t1);
                 params.put("t2", t2);
                 params.put("t3", t3);
