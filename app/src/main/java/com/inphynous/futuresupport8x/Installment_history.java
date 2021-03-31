@@ -1,10 +1,10 @@
 package com.inphynous.futuresupport8x;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -20,7 +20,8 @@ public class Installment_history extends AppCompatActivity {
     EditText T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12;
     TextView month1, sum1, D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12;
     String url = "http://192.168.0.170/00_fs_system2021/get_installment_history.php";
-    Button btn_get_record;
+    String url2 = "http://192.168.0.170/00_fs_system2021/insert_sum_installment.php";
+    Button btn_get_record,btn_insert_data;
     Spinner spinner_month;
     SpinnerHelper helper;
     String text1;
@@ -31,6 +32,8 @@ public class Installment_history extends AppCompatActivity {
 
 
         month1 = findViewById(R.id.month);
+        sum1=findViewById(R.id.addtion_total);
+        btn_insert_data= findViewById(R.id.update_all);
         T1 = findViewById(R.id.A1);
         T2 = findViewById(R.id.A2);
         T3 = findViewById(R.id.A3);
@@ -83,10 +86,7 @@ public class Installment_history extends AppCompatActivity {
                 if (parent.getItemAtPosition(position).toString().equals("Select Month")) {
                     ((TextView) view).setTextColor(Color.GRAY);
                 }
-
             }
-
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -99,8 +99,57 @@ public class Installment_history extends AppCompatActivity {
                 get_previous_record();
             }
         });
+//        SessionManager sessionManager = new SessionManager(getApplicationContext());
+//        HashMap<String, String> userDetails = sessionManager.getUserDetailFromSesion();
+//        String password1 = userDetails.get(SessionManager.KEY_USERNAME);
+//        //use this detail to acces login person username
+//
+//        if (password1.equals("LSP")){
+//            btn_insert_data.setVisibility(View.VISIBLE);
+//        }
+        btn_insert_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update_sum();
+            }
+        });
 
     }
+
+    private void update_sum() {
+        final String sum_of_installment = sum1.getText().toString().trim();
+        StringRequest request = new StringRequest(Request.Method.POST, url2, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.equalsIgnoreCase("Registered Successfully")) {
+                    Toast.makeText(Installment_history.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Installment_history.this, response, Toast.LENGTH_SHORT).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(Installment_history.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("month", text1);
+                params.put("sum_of_installment", sum_of_installment);
+
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+        finish();
+
+
+
+    }
+
     private void get_previous_record() {
         if (text1.equals("Select Month")) {
             Toast.makeText(this, "SELECT MONTH", Toast.LENGTH_SHORT).show();
@@ -125,11 +174,10 @@ public class Installment_history extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(response);
                         String success = jsonObject.getString("success");
                         JSONArray jsonArray = jsonObject.getJSONArray("data");
-
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject object2 = jsonArray.getJSONObject(i);
 //                            final int id = object2.getInt("idno");
-                            final String month_date = object2.getString("month");
+//                            final String month_date = object2.getString("month");
                             final int A1 = object2.getInt("t1");
                             final int A2 = object2.getInt("t2");
                             final int A3 = object2.getInt("t3");
@@ -155,7 +203,17 @@ public class Installment_history extends AppCompatActivity {
                             String date11 = object2.getString("dat11");
                             String date12 = object2.getString("dat12");
 
-                            month1.setText(month_date);
+                            SessionManager sessionManager = new SessionManager(getApplicationContext());
+                            HashMap<String, String> userDetails = sessionManager.getUserDetailFromSesion();
+                            String password1 = userDetails.get(SessionManager.KEY_USERNAME);
+                            //use this detail to acces login person username
+
+                            if (password1.equals("LSP")){
+                                btn_insert_data.setVisibility(View.VISIBLE);
+                            }
+
+
+//                            month1.setText(month_date);
                             T1.setText(String.valueOf(A1));
                             T2.setText(String.valueOf(A2));
                             T3.setText(String.valueOf(A3));

@@ -1,15 +1,12 @@
 package com.inphynous.futuresupport8x;
 
 import android.content.Intent;
-import android.nfc.Tag;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.android.volley.*;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
@@ -17,7 +14,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -81,7 +77,6 @@ public class LoginActivity extends AppCompatActivity {
                     , new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    Log.e("response", "this is response" + response);
 
                     if (response.equalsIgnoreCase("LOGIN FAILED")) {
                         Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();

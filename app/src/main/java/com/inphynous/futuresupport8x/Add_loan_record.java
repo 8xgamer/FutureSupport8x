@@ -229,7 +229,7 @@ public class Add_loan_record extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 text3 = parent.getItemAtPosition(position).toString();
-                if (parent.getItemAtPosition(position).toString().equals("Select Month")) {
+                if (parent.getItemAtPosition(position).toString().equals("Select Due Month")) {
                     ((TextView) view).setTextColor(Color.GRAY);
                 }
             }
@@ -432,6 +432,8 @@ public class Add_loan_record extends AppCompatActivity {
         } else if (intereset_loan.isEmpty()) {
             Toast.makeText(this, "Enter Interest", Toast.LENGTH_SHORT).show();
         } else if (text2.equals("Select status")) {
+            Toast.makeText(this, "SELECT Status", Toast.LENGTH_SHORT).show();
+        }else if (text3.equals("Select Due Month")) {
             Toast.makeText(this, "SELECT Status", Toast.LENGTH_SHORT).show();
         } else {
             StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

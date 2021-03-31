@@ -114,7 +114,7 @@
         android:textSize="20dp"
         android:layout_marginBottom="3dp"
         android:textStyle="italic"
-        android:visibility="visible" />
+        android:visibility="gone" />
     <Button
         android:id="@+id/btn_create"
         android:layout_width="match_parent"
@@ -128,7 +128,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="3dp"
         android:textStyle="italic"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"

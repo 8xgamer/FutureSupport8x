@@ -14,11 +14,11 @@ import java.util.Map;
 
 public class Update_member_installment extends AppCompatActivity {
     SpinnerHelper helper;
-    Spinner spinner_member;
+    Spinner spinner_member,spinner_months;
     EditText inst_amount;
     String url="http://192.168.0.170/00_fs_system2021/update.php";
     TextView date;
-    String text1;
+    String text1,text2;
     Button button_submit;
 
     @Override
@@ -26,20 +26,25 @@ public class Update_member_installment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_member_installment);
 
+        spinner_months=findViewById(R.id.spinner_months);
         spinner_member = findViewById(R.id.spinner_member);
         inst_amount = findViewById(R.id.inst_amt);
         date = findViewById(R.id.on_date);
         button_submit = findViewById(R.id.btn_submit);
         spinner_member.setSelection(0);
+        spinner_months.setSelection(0);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Member, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_member.setAdapter(adapter);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.Month_Name, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_months.setAdapter(adapter1);
 
         button_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                create_new_membe_record();
+                create_new_member_record();
             }
         });
 
@@ -58,13 +63,29 @@ public class Update_member_installment extends AppCompatActivity {
 
             }
         });
+        spinner_months.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                text2 = parent.getItemAtPosition(position).toString();
+                if (parent.getItemAtPosition(position).toString().equals("Select Month")) {
+                    ((TextView) view).setTextColor(Color.GRAY);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
-    private void create_new_membe_record() {
+    private void create_new_member_record() {
         final String amount = inst_amount.getText().toString().trim();
 
-
-        if (text1.equals("SELECT MEMBER")) {
+        if (text1.equals("Select Month")) {
+            Toast.makeText(this, "Select Month First", Toast.LENGTH_SHORT).show();
+        } else if (text1.equals("SELECT MEMBER")) {
             Toast.makeText(this, "Select Member First", Toast.LENGTH_SHORT).show();
         } else if (amount.isEmpty()) {
             Toast.makeText(this, "Enter Amount First", Toast.LENGTH_SHORT).show();
@@ -91,6 +112,7 @@ public class Update_member_installment extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("member_name", text1);
+                    params.put("month_name", text2);
                     params.put("Amount", amount);
 
                     return params;

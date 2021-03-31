@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Installment_history"></activity>
+        <activity android:name=".Installment_history"
+            android:parentActivityName=".installment"></activity>
         <activity android:name=".Update_member_installment" />
         <activity
             android:name=".Add_loan_record"

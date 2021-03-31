@@ -28,7 +28,7 @@ public class AccountActivity extends AppCompatActivity {
     String url2 = "http://192.168.0.170/00_fs_system2021/get_collected_amt.php";
     AccDetail accDetail;
     TextView text1, text2, date1;
-    TextView l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12;
+    TextView l1,l2,l3,l4,l5,l6,l7,l8,l9,l10,l11,l12,current_amt;
     Detail detail;
     Button edit_acc;
     ArrayList<Detail> allDetailArray = new ArrayList<>();
@@ -66,20 +66,20 @@ public class AccountActivity extends AppCompatActivity {
         l10= findViewById(R.id.l10);
         l11= findViewById(R.id.l11);
         l12= findViewById(R.id.l12);
+        current_amt=findViewById(R.id.current_amt);
 
         getbusyamount();
-        update_invested_amount();
+
 
         edit_acc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(AccountActivity.this, update_acc_detail.class);
                 startActivity(intent);
+                update_invested_amount();
             }
         });
     }
-
     private void update_invested_amount() {
         final String sum1 = l1.getText().toString().trim();
         final String sum2 = l2.getText().toString().trim();
@@ -93,6 +93,13 @@ public class AccountActivity extends AppCompatActivity {
         final String sum10 = l10.getText().toString().trim();
         final String sum11 = l11.getText().toString().trim();
         final String sum12 = l12.getText().toString().trim();
+        final String current_amount=current_amt.getText().toString().trim();
+        final String busy_amt = text1.getText().toString().trim();
+        final String total_deposited_amt = textView.getText().toString().trim();
+        final String sum_interest = B2.getText().toString().trim();
+        final String total_saving_with_int = t2.getText().toString().trim();
+        final String amount_in_acc = s2.getText().toString().trim();
+        final String withdrawal_amt = w2.getText().toString().trim();
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -125,7 +132,13 @@ public class AccountActivity extends AppCompatActivity {
                 params.put("rahul", sum10);
                 params.put("pradyum", sum11);
                 params.put("yogesh", sum12);
-
+                params.put("current_amount", current_amount);
+                params.put("busy_amt", busy_amt);
+                params.put("total_deposited_amt", total_deposited_amt);
+                params.put("sum_interest", sum_interest);
+                params.put("total_saving_with_int", total_saving_with_int);
+                params.put("amount_in_acc", amount_in_acc);
+                params.put("withdrawal_amt", withdrawal_amt);
 
                 return params;
             }
@@ -144,7 +157,6 @@ public class AccountActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
                     JSONArray jsonArray = jsonObject.getJSONArray("data4");
-                    System.out.println(jsonArray);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object2 = jsonArray.getJSONObject(i);
                         final int busy_amount = object2.getInt("busy_amount");
@@ -164,6 +176,7 @@ public class AccountActivity extends AppCompatActivity {
                         final int rahul =object2.getInt("rahul");
                         final int pradyum =object2.getInt("pradyum");
                         final int yogesh =object2.getInt("yogesh");
+                        String date= object2.getString("up_date");
 
                         SessionManager sessionManager = new SessionManager(getApplicationContext());
                         HashMap<String, String> userDetails = sessionManager.getUserDetailFromSesion();
@@ -171,7 +184,7 @@ public class AccountActivity extends AppCompatActivity {
                         String password1 = userDetails.get(SessionManager.KEY_USERNAME);
                         //use this detail to acces login person username
 
-                        System.out.println(password1);
+
                         if (password1.equals("LSP")){
                             edit_acc.setVisibility(View.VISIBLE);
                         }
@@ -180,7 +193,8 @@ public class AccountActivity extends AppCompatActivity {
                         int total_saving_with_int = total_deposited_amt + sum_interest;
                         int amount_in_acc = total_deposited_amt + sum_interest - busy_amount;
                         int withdrawal_amt = amount_in_acc - backup_amount;
-                        System.out.println(withdrawal_amt);
+                        final int currentamt = total_saving_with_int/12;
+                        System.out.println(currentamt);
 
                         text1.setText(String.valueOf(busy_amount));
                         textView.setText(String.valueOf(total_deposited_amt));
@@ -202,6 +216,8 @@ public class AccountActivity extends AppCompatActivity {
                         l10.setText(String.valueOf(rahul));
                         l11.setText(String.valueOf(pradyum));
                         l12.setText(String.valueOf(yogesh));
+                        current_amt.setText(String.valueOf(currentamt));
+                        date1.setText(String.valueOf(date));
 
 
 

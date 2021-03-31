@@ -17,7 +17,7 @@ public class Detail {
     String date1,date2,date3,date4,date5,date6,date7,date8,date9,date10,date11,date12;
 
 
-    public Detail(boolean status, int loan, String accountno, String ifsc, String bankname, String username, String ondate, String uptodate,    int investedamt,int currentamt) {
+    public Detail(boolean status, int loan, String accountno, String ifsc, String bankname, String username, String ondate, String uptodate,int investedamt,int currentamt) {
         this.status = status;
         this.loan = loan;
         this.ondate = ondate;

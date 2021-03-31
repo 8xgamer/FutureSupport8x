@@ -481,6 +481,15 @@
         android:textSize="20dp"
         android:textStyle="bold"
         />
+    <Button
+        android:id="@+id/HISTORY"
+        android:hint="HISTORY"
+        android:layout_marginTop="2dp"
+        android:background="@color/green"
+        android:visibility="gone"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
 
 <view class="androidx.appcompat.app.AlertController$RecycleListView">
 

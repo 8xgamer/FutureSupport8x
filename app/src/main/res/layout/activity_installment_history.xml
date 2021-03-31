@@ -7,7 +7,7 @@
     tools:context=".Installment_history">
 
     <TextView
-        android:text="EDIT MONTHLLY INSTALLMENT SHEET"
+        android:text="HISTORY"
         android:textAlignment="center"
         android:textStyle="bold"
         android:textSize="20dp"
@@ -472,8 +472,8 @@
             android:layout_column="1"/>
     </TableRow>
     <Button
-        android:id="@+id/update_installment"
-        android:hint="Edit"
+        android:id="@+id/update_all"
+        android:hint="insert"
         android:background="@color/green"
         android:textSize="22dp"
         android:visibility="gone"

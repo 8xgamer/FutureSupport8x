@@ -28,7 +28,7 @@ public class installment extends AppCompatActivity {
     TextView month1,T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,D1,D2,D3,D4,D5,D6,D7,D8,D9,D10,D11,D12,sum1,coll_amt;
     String url= "http://192.168.0.170/00_fs_system2021/get_installment_record.php";
     String url2= "http://192.168.0.170/00_fs_system2021/get_collected_amt.php";
-    Button update,edit,create;
+    Button update,edit,create,btn_history;
     MyAdapter adapter;
     String check = "";
     ArrayList<Detail2> allDetailArray = new ArrayList<>();
@@ -41,6 +41,7 @@ public class installment extends AppCompatActivity {
         setContentView(R.layout.activity_installment);
         check = getIntent().getStringExtra("check");
         month1 = findViewById(R.id.month);
+        btn_history=findViewById(R.id.HISTORY);
         T1 = findViewById(R.id.A1);
         T2 = findViewById(R.id.A2);
         T3 = findViewById(R.id.A3);
@@ -72,6 +73,13 @@ public class installment extends AppCompatActivity {
 //        coll_amt = findViewById(R.id.collected_amt);
         getdata();
 //        getcollectedamt();
+        btn_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(installment.this,Installment_history.class);
+                startActivity(intent);
+            }
+        });
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -182,7 +190,6 @@ public class installment extends AppCompatActivity {
                         String password1 = userDetails.get(SessionManager.KEY_USERNAME);
                         //use this detail to acces login person username
 
-                        System.out.println(password1);
                         if (password1.equals("LSP")){
                             update.setVisibility(View.VISIBLE);
                             edit.setVisibility(View.VISIBLE);
@@ -190,6 +197,7 @@ public class installment extends AppCompatActivity {
                         }
 
 
+                        btn_history.setVisibility(View.VISIBLE);
                         month1.setText(month_date);
                         T1.setText(String.valueOf(A1));
                         T2.setText(String.valueOf(A2));

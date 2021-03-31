@@ -88,7 +88,6 @@ public class Loan_status extends AppCompatActivity {
 
                         SessionManager sessionManager = new SessionManager(getApplicationContext());
                         HashMap<String, String> userDetails = sessionManager.getUserDetailFromSesion();
-                        String username = userDetails.get(SessionManager.KEY_FULLNAME);
                         String password1 = userDetails.get(SessionManager.KEY_USERNAME);
                         //use this detail to acces login person username
 

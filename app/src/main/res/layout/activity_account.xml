@@ -364,10 +364,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
+            android:textSize="50dp"
             android:visibility="gone"
             />
         <TextView
             android:id="@+id/l12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/current_amt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"

@@ -26,7 +26,7 @@ public class unique extends AppCompatActivity {
     boolean fragstatus;
     String fragondate;
     String fraguptodate;
-    int fragamt,fraginvestedamt, fragcurrentamt;
+    int fragamt, fraginvestedamt, fragcurrentamt;
     Button button_logout;
 
 
@@ -75,7 +75,7 @@ public class unique extends AppCompatActivity {
                         String uptodate = object2.getString("uptodate");
                         int investedamt = object2.getInt("invested_amount");
                         int currentamt = object2.getInt("current_amount");
-                        detail = new Detail(status,loan, accountno, ifsc, bankname, username,ondate,uptodate,investedamt,currentamt);
+                        detail = new Detail(status, loan, accountno, ifsc, bankname, username, ondate, uptodate, investedamt, currentamt);
                         allDetailArray.add(detail);
 
 
@@ -84,40 +84,39 @@ public class unique extends AppCompatActivity {
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                 String selected = ((TextView) view.findViewById(R.id.txt_name)).getText().toString();
 
-                        Bundle arg = new Bundle();
-                        arg.putString("name", selected);
-                        for (Detail member : allDetailArray) {
-                            if (member.getUsername().equals(selected)) {
+                                Bundle arg = new Bundle();
+                                arg.putString("name", selected);
+                                for (Detail member : allDetailArray) {
+                                    if (member.getUsername().equals(selected)) {
 
-                                fragacc = member.getAccountno();
-                                fragamt = member.getLoan();
-                                fragifsc = member.getIfsc();
-                                fragbank = member.getBankname();
-                                fragstatus = member.isStatus();
-                                fragondate = member.getOndate();
-                                fraguptodate = member.getUptodate();
-                                fraginvestedamt = member.getInvestedamt();
-                                fragcurrentamt = member.getCurrentamt();
+                                        fragacc = member.getAccountno();
+                                        fragamt = member.getLoan();
+                                        fragifsc = member.getIfsc();
+                                        fragbank = member.getBankname();
+                                        fragstatus = member.isStatus();
+                                        fragondate = member.getOndate();
+                                        fraguptodate = member.getUptodate();
+                                        fraginvestedamt = member.getInvestedamt();
+                                        fragcurrentamt = member.getCurrentamt();
 
-                                arg.putString("fragacc", fragacc);
-                                arg.putString("fragifsc", fragifsc);
-                                arg.putString("fragbank", fragbank);
-                                arg.putInt("loan", fragamt);
-                                arg.putBoolean("fragstatus", fragstatus);
-                                arg.putString("fragondate", fragondate);
-                                arg.putString("fraguptodate", fraguptodate);
-                                arg.putInt("fraginvestedamt",fraginvestedamt);
-                                arg.putInt("fragcurrentamt",fragcurrentamt);
-                                arg.putString("key","2021");
-                            }
+                                        arg.putString("fragacc", fragacc);
+                                        arg.putString("fragifsc", fragifsc);
+                                        arg.putString("fragbank", fragbank);
+                                        arg.putInt("loan", fragamt);
+                                        arg.putBoolean("fragstatus", fragstatus);
+                                        arg.putString("fragondate", fragondate);
+                                        arg.putString("fraguptodate", fraguptodate);
+                                        arg.putInt("fraginvestedamt", fraginvestedamt);
+                                        arg.putInt("fragcurrentamt", fragcurrentamt);
+                                        arg.putString("key", "2021");
+                                    }
 
-                        }
+                                }
 
 
-
-                        MyDialogueFragment userPopUp = new MyDialogueFragment();
-                        userPopUp.setArguments(arg);
-                        userPopUp.show(getSupportFragmentManager(), "MyFragment");
+                                MyDialogueFragment userPopUp = new MyDialogueFragment();
+                                userPopUp.setArguments(arg);
+                                userPopUp.show(getSupportFragmentManager(), "MyFragment");
                             }
                         });
                     }
@@ -147,7 +146,7 @@ public class unique extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     final JSONArray jsonArray = jsonObject.getJSONArray("data");
-
+                    System.out.println(jsonArray);
                     JSONObject object = jsonArray.getJSONObject(0);
                     String id = object.getString("id");
                     final String password1 = object.getString("username");
@@ -158,19 +157,15 @@ public class unique extends AppCompatActivity {
                     boolean status = (object.getString("status")).equals("1");
                     int investedamt = object.getInt("invested_amount");
                     int currentamt = object.getInt("current_amount");
-                    employee = new Employee(id, fullname, username, password1, mobileno, email,status,investedamt,currentamt);
+                    employee = new Employee(id, fullname, username, password1, mobileno, email, status, investedamt, currentamt);
 
                     employeeArrayList.add(employee);
                     adapter.notifyDataSetChanged();
 
 
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -218,16 +213,16 @@ public class unique extends AppCompatActivity {
                         int invested_amount = object2.getInt("invested_amount");
                         int current_amount = object2.getInt("current_amount");
 
-                        employee = new Employee(id, fullname, username, password1, mobileno, email,status,invested_amount,current_amount);
+                        employee = new Employee(id, fullname, username, password1, mobileno, email, status, invested_amount, current_amount);
                         employeeArrayList.add(employee);
-                     Collections.sort(employeeArrayList, new Comparator<Employee>() {
-                         @Override
-                         public int compare(Employee employee, Employee t1) {
-                             boolean b1 = employee.isStatus();
-                             boolean b2 = t1.isStatus();
-                             return (b1 != b2) ? (b1) ? -1 : 1 : 0;
-                         }
-                     });
+                        Collections.sort(employeeArrayList, new Comparator<Employee>() {
+                            @Override
+                            public int compare(Employee employee, Employee t1) {
+                                boolean b1 = employee.isStatus();
+                                boolean b2 = t1.isStatus();
+                                return (b1 != b2) ? (b1) ? -1 : 1 : 0;
+                            }
+                        });
                         adapter.notifyDataSetChanged();
                         for (Detail member : allDetailArray) {
 
@@ -261,11 +256,11 @@ public class unique extends AppCompatActivity {
                                         arg.putString("fragbank", fragbank);
                                         arg.putInt("loan", fragamt);
                                         arg.putBoolean("fragstatus", fragstatus);
-                                        arg.putString("key","2022");
+                                        arg.putString("key", "2022");
                                         arg.putString("fragondate", fragondate);
                                         arg.putString("fraguptodate", fraguptodate);
-                                        arg.putInt("fraginvestedamt",fraginvestedamt);
-                                        arg.putInt("fragcurrentamt",fragcurrentamt);
+                                        arg.putInt("fraginvestedamt", fraginvestedamt);
+                                        arg.putInt("fragcurrentamt", fragcurrentamt);
 
 
                                     }
